@@ -1,0 +1,39 @@
+{
+  "name": "cordova-plugin-local-notifications-mm",
+  "version": "0.8.2-dev-v1",
+  "description": "The essential purpose of local notifications is to enable an application to inform its users that it has something for them — for example, a message or an upcoming appointment — when the application isn’t running in the foreground.",
+  "cordova": {
+    "id": "cordova-plugin-local-notifications-mm",
+    "platforms": [
+      "android",
+      "ios",
+      "wp8",
+      "windows8"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dpaloucva/cordova-plugin-local-notifications.git"
+  },
+  "keywords": [
+    "appplant",
+    "cordova",
+    "local-notifications",
+    "notifications",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "cordova-windows"
+  ],
+  "author": {
+    "name": "Sebastián Katzer"
+  },
+  "license": "Apache 2.0",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/dpaloucva/cordova-plugin-local-notifications/issues"
+  },
+  "homepage": "https://github.com/dpaloucva/cordova-plugin-local-notifications#readme",
+  "_id": "cordova-plugin-local-notifications-mm@0.8.2-dev",
+  "_from": "cordova-plugin-local-notifications-mm@*"
+}

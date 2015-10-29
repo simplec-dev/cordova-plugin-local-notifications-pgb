@@ -1,5 +1,5 @@
 
-[![PayPayl donate button](https://img.shields.io/badge/paypal-donate-yellow.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=L3HKQCD9UA35A "Donate once-off to this project using Paypal")
+Temporary Fork of Cordova Local-Notification Plugin to hot-fix PGB build problem for Moodle Mobile application.
 
 #### :bangbang: Please vote for these cordova-windows issues :bangbang:
 1. https://issues.apache.org/jira/browse/CB-8674 _(Missing launch arguments)_
