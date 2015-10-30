@@ -53,7 +53,7 @@
     <!-- ios -->
     <platform name="ios">
 
-        <dependency id="de.appplant.cordova.common.registerusernotificationsettings" />
+        <dependency id="cordova-common-registerusernotificationsettings-mm" />
 
         <config-file target="config.xml" parent="/*">
             <feature name="LocalNotification">
