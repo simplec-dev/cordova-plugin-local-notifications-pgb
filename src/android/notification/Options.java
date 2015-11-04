@@ -220,6 +220,20 @@ public class Options {
     }
 
     /**
+     * Get original trigger date.
+     */
+    public Date getOriginalTriggerDate() {
+        return new Date(getOriginalTriggerTime());
+    }
+
+    /**
+     * Get original trigger time.
+     */
+    public long getOriginalTriggerTime() {
+        return options.optLong("at", 0) * 1000;
+    }
+
+    /**
      * Title for the local notification.
      */
     public String getTitle() {
