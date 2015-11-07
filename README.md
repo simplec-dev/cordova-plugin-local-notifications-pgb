@@ -1,5 +1,5 @@
 
-Temporary Fork of Cordova Local-Notification Plugin to hot-fix PGB build problem for Moodle Mobile application.
+Temporary Fork of Cordova Local-Notification Plugin to hot-fix PhoneGap Build build problems.
 
 #### :bangbang: Please vote for these cordova-windows issues :bangbang:
 1. https://issues.apache.org/jira/browse/CB-8674 _(Missing launch arguments)_
