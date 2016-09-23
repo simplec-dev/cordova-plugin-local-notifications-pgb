@@ -194,13 +194,25 @@ public class Manager {
 
         for (int i=0; i<1000; i++) {
             Intent updateServiceIntent = new Intent(context, TriggerReceiver.class);
-            PendingIntent pendingUpdateIntent = PendingIntent.getService(context, 0, updateServiceIntent, 0);
+            PendingIntent pendingUpdateIntent = PendingIntent.getActivity(context, 0, updateServiceIntent, PendingIntent.FLAG_CANCEL_CURRENT);
 
             // Cancel alarms
             try {
                 alarmManager.cancel(pendingUpdateIntent);
             } catch (Exception e) {
-                Log.e(LOG_TAG, "AlarmManager update was not canceled. " + e.toString());
+                Log.e(LOG_TAG, "AlarmManager TriggerReceiver was not canceled. " + i+ " " + e.toString());
+                break;
+            }
+        }
+        for (int i=0; i<1000; i++) {
+            Intent updateServiceIntent = new Intent(context, RestoreReceiver.class);
+            PendingIntent pendingUpdateIntent = PendingIntent.getActivity(context, 0, updateServiceIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+
+            // Cancel alarms
+            try {
+                alarmManager.cancel(pendingUpdateIntent);
+            } catch (Exception e) {
+                Log.e(LOG_TAG, "AlarmManager RestoreReceiver was not canceled. " + i+ " " + e.toString());
                 break;
             }
         }
