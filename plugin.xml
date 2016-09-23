@@ -2,7 +2,7 @@
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        id="cordova-plugin-local-notifications-pgb"
+        id="cordova-plugin-local-notifications-simplec"
         version="0.8.2-rc.1">
 
     <name>LocalNotification</name>
@@ -77,8 +77,6 @@
 
     <!-- android -->
     <platform name="android">
-
-        <dependency id="android.support.v13" url="https://github.com/nnexai/cordova-plugin-android-support-v13.git"/>
 
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="LocalNotification">
