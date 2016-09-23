@@ -29,6 +29,7 @@ import android.content.Intent;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -48,6 +49,7 @@ import static de.appplant.cordova.plugin.notification.Notification.PREF_KEY;
  * cancel or clear local notifications.
  */
 public class Manager {
+    private static final String LOG_TAG = "LocalNotification";
 
     // Context passed through constructor and used for notification builder.
     private Context context;
@@ -198,7 +200,7 @@ public class Manager {
             try {
                 alarmManager.cancel(pendingUpdateIntent);
             } catch (Exception e) {
-                Log.e(TAG, "AlarmManager update was not canceled. " + e.toString());
+                Log.e(LOG_TAG, "AlarmManager update was not canceled. " + e.toString());
                 break;
             }
         }
