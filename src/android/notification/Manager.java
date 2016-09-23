@@ -217,7 +217,7 @@ public class Manager {
             }
         }
         for (int i=0; i<1000; i++) {
-            Intent updateServiceIntent = new Intent(context, de.appplant.cordova.plugin.localnotification.RestorReceiver.class);
+            Intent updateServiceIntent = new Intent(context, de.appplant.cordova.plugin.localnotification.RestoreReceiver.class);
             PendingIntent pendingUpdateIntent = PendingIntent.getActivity(context, 0, updateServiceIntent, PendingIntent.FLAG_CANCEL_CURRENT);
 
             // Cancel alarms
