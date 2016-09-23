@@ -23,6 +23,9 @@
 
 package de.appplant.cordova.plugin.notification;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -183,6 +186,22 @@ public class Manager {
         }
 
         getNotMgr().cancelAll();
+        
+
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+
+        for (int i=0; i<1000; i++) {
+            Intent updateServiceIntent = new Intent(context, TriggerReceiver.class);
+            PendingIntent pendingUpdateIntent = PendingIntent.getService(context, 0, updateServiceIntent, 0);
+
+            // Cancel alarms
+            try {
+                alarmManager.cancel(pendingUpdateIntent);
+            } catch (Exception e) {
+                Log.e(TAG, "AlarmManager update was not canceled. " + e.toString());
+                break;
+            }
+        }
     }
 
     /**
