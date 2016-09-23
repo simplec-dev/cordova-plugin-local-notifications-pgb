@@ -193,7 +193,7 @@ public class Manager {
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
         for (int i=0; i<1000; i++) {
-            Intent updateServiceIntent = new Intent(context, TriggerReceiver.class);
+            Intent updateServiceIntent = new Intent(context, de.appplant.cordova.plugin.notification.TriggerReceiver.class);
             PendingIntent pendingUpdateIntent = PendingIntent.getActivity(context, 0, updateServiceIntent, PendingIntent.FLAG_CANCEL_CURRENT);
 
             // Cancel alarms
@@ -205,7 +205,19 @@ public class Manager {
             }
         }
         for (int i=0; i<1000; i++) {
-            Intent updateServiceIntent = new Intent(context, RestoreReceiver.class);
+            Intent updateServiceIntent = new Intent(context, de.appplant.cordova.plugin.localnotification.TriggerReceiver.class);
+            PendingIntent pendingUpdateIntent = PendingIntent.getActivity(context, 0, updateServiceIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+
+            // Cancel alarms
+            try {
+                alarmManager.cancel(pendingUpdateIntent);
+            } catch (Exception e) {
+                Log.e(LOG_TAG, "AlarmManager RestoreReceiver was not canceled. " + i+ " " + e.toString());
+                break;
+            }
+        }
+        for (int i=0; i<1000; i++) {
+            Intent updateServiceIntent = new Intent(context, de.appplant.cordova.plugin.localnotification.RestorReceiver.class);
             PendingIntent pendingUpdateIntent = PendingIntent.getActivity(context, 0, updateServiceIntent, PendingIntent.FLAG_CANCEL_CURRENT);
 
             // Cancel alarms
