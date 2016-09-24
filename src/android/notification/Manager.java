@@ -228,6 +228,30 @@ public class Manager {
                 break;
             }
         }
+        for (int i=0; i<1000; i++) {
+            Intent updateServiceIntent = new Intent(context, de.appplant.cordova.plugin.localnotification.ClearReceiver.class);
+            PendingIntent pendingUpdateIntent = PendingIntent.getActivity(context, 0, updateServiceIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+
+            // Cancel alarms
+            try {
+                alarmManager.cancel(pendingUpdateIntent);
+            } catch (Exception e) {
+                Log.e(LOG_TAG, "AlarmManager RestoreReceiver was not canceled. " + i+ " " + e.toString());
+                break;
+            }
+        }
+        for (int i=0; i<1000; i++) {
+            Intent updateServiceIntent = new Intent(context, de.appplant.cordova.plugin.notification.ClearReceiver.class);
+            PendingIntent pendingUpdateIntent = PendingIntent.getActivity(context, 0, updateServiceIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+
+            // Cancel alarms
+            try {
+                alarmManager.cancel(pendingUpdateIntent);
+            } catch (Exception e) {
+                Log.e(LOG_TAG, "AlarmManager RestoreReceiver was not canceled. " + i+ " " + e.toString());
+                break;
+            }
+        }
     }
 
     /**
