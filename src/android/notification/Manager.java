@@ -236,7 +236,7 @@ public class Manager {
             try {
                 alarmManager.cancel(pendingUpdateIntent);
             } catch (Exception e) {
-                Log.e(LOG_TAG, "AlarmManager RestoreReceiver was not canceled. " + i+ " " + e.toString());
+                Log.e(LOG_TAG, "AlarmManager ClearReceiver was not canceled. " + i+ " " + e.toString());
                 break;
             }
         }

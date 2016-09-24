@@ -32,6 +32,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -43,6 +44,7 @@ import java.util.Date;
  * like show, delete, cancel for a single local notification instance.
  */
 public class Notification {
+    private static final String LOG_TAG = "LocalNotification";
 
     // Used to differ notifications by their life cycle state
     public enum Type {
@@ -175,8 +177,7 @@ public class Notification {
                 context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
 
         if (isRepeating()) {
-            getAlarmMgr().setRepeating(AlarmManager.RTC_WAKEUP,
-                    triggerTime, options.getRepeatInterval(), pi);
+            getAlarmMgr().setRepeating(AlarmManager.RTC_WAKEUP, triggerTime, options.getRepeatInterval(), pi);
         } else {
             getAlarmMgr().set(AlarmManager.RTC_WAKEUP, triggerTime, pi);
         }
@@ -187,9 +188,14 @@ public class Notification {
      *
      */
     public void clear () {
+        Log.e(LOG_TAG, "CLEARING");
         if (!isRepeating() && wasInThePast()) {
             unpersist();
         } else {
+            Intent intent = new Intent(context, receiver).setAction(options.getIdStr());
+            PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, 0);
+            getAlarmMgr().cancel(pi);
+            
             getNotMgr().cancel(getId());
         }
     }
@@ -203,11 +209,9 @@ public class Notification {
      * method and cancel it.
      */
     public void cancel() {
-        Intent intent = new Intent(context, receiver)
-                .setAction(options.getIdStr());
-
-        PendingIntent pi = PendingIntent.
-                getBroadcast(context, 0, intent, 0);
+        Log.e(LOG_TAG, "CANCELLING");
+        Intent intent = new Intent(context, receiver).setAction(options.getIdStr());
+        PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, 0);
 
         getAlarmMgr().cancel(pi);
         getNotMgr().cancel(options.getId());
