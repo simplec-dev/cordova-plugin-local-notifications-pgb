@@ -132,6 +132,27 @@ public class LocalNotification extends CordovaPlugin {
                             final CallbackContext command) throws JSONException {
 
         Notification.setDefaultTriggerReceiver(TriggerReceiver.class);
+        
+        if (action.equals("cancel")) {
+            cancel(args);
+            command.success();
+            return true;
+        }
+        else if (action.equals("cancelAll")) {
+            cancelAll();
+            command.success();
+            return true;
+        }
+        else if (action.equals("clear")) {
+            clear(args);
+            command.success();
+            return true;
+        }
+        else if (action.equals("clearAll")) {
+            clearAll();
+            command.success();
+            return true;
+        }
 
         cordova.getThreadPool().execute(new Runnable() {
             public void run() {
@@ -141,22 +162,6 @@ public class LocalNotification extends CordovaPlugin {
                 }
                 else if (action.equals("update")) {
                     update(args);
-                    command.success();
-                }
-                else if (action.equals("cancel")) {
-                    cancel(args);
-                    command.success();
-                }
-                else if (action.equals("cancelAll")) {
-                    cancelAll();
-                    command.success();
-                }
-                else if (action.equals("clear")) {
-                    clear(args);
-                    command.success();
-                }
-                else if (action.equals("clearAll")) {
-                    clearAll();
                     command.success();
                 }
                 else if (action.equals("isPresent")) {
