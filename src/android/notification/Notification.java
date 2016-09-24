@@ -210,6 +210,9 @@ public class Notification {
      */
     public void cancel() {
         Log.e(LOG_TAG, "CANCELLING");
+
+        Log.e(LOG_TAG, "CANCELLING "+receiver.getClass().getName()+"  "+options.getIdStr());
+        
         Intent intent = new Intent(context, receiver).setAction(options.getIdStr());
         PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, 0);
 
