@@ -291,12 +291,6 @@ public class Manager {
                 break;
             }
         }
-        
-        
-        
-
-        PendingIntent pi = PendingIntent.getBroadcast(
-                context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
     }
 
     /**
