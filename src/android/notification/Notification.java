@@ -173,8 +173,10 @@ public class Notification {
                 .setAction(options.getIdStr())
                 .putExtra(Options.EXTRA, options.toString());
 
+        Log.e(LOG_TAG, "SETTING "+receiver.getName()+"  "+options.getIdStr()+"  "+options.toString());
+
         PendingIntent pi = PendingIntent.getBroadcast(
-                context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+                context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         if (isRepeating()) {
             getAlarmMgr().setRepeating(AlarmManager.RTC_WAKEUP, triggerTime, options.getRepeatInterval(), pi);
