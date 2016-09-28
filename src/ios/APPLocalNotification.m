@@ -154,11 +154,9 @@
  */
 - (void) cancelAll:(CDVInvokedUrlCommand*)command
 {
-    [self.commandDelegate runInBackground:^{
-        [self cancelAllLocalNotifications];
-        [self fireEvent:@"cancelall"];
-        [self execCallback:command];
-    }];
+    [self cancelAllLocalNotifications];
+    [self fireEvent:@"cancelall"];
+    [self execCallback:command];
 }
 
 /**
